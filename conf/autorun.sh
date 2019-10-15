@@ -5,19 +5,16 @@
 
 cd /var/www/webapp/src
 
-sudo setfacl -R -d -m u:admin:rwx ./tmp ./log
-sudo setfacl -R -d -m g:www-data:rwx ./tmp ./log
-sudo setfacl -R -d -m o::r-x ./tmp ./log
+sudo setfacl -R -d -m u:admin:rwx ./web/assets ./runtime
+sudo setfacl -R -d -m g:www-data:rwx ./web/assets ./runtime
+sudo setfacl -R -d -m o::r-x ./web/assets ./runtime
 
-sudo setfacl -R -m u:admin:rwx ./tmp ./log
-sudo setfacl -R -m g:www-data:rwx ./tmp ./log
-sudo setfacl -R -m o::r-x ./tmp ./log
+sudo setfacl -R -m u:admin:rwx ./web/assets ./runtime
+sudo setfacl -R -m g:www-data:rwx ./web/assets ./runtime
+sudo setfacl -R -m o::r-x ./web/assets ./runtime
 
 # Install some dependencies
 composer install
 
-# Maybe collect statics?
-#RAILS_ENV=production rails assets:precompile
-
 # Maybe run migrations?
-#RAILS_ENV=production rails db:migrate
+# ./yii migrate
